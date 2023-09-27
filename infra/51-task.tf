@@ -92,6 +92,13 @@ resource "aws_security_group" "ecs_stress" {
     to_port = "8080"
   }
 
+  egress {
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port = "0"
+    to_port = "0"
+  }
+
   lifecycle {
     ignore_changes = [ingress, egress]
   }

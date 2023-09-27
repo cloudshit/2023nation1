@@ -130,6 +130,22 @@ resource "aws_security_group" "ecs_product" {
     to_port = "8080"
   }
 
+  egress {
+    protocol = "TCP"
+    security_groups = [
+      aws_security_group.db.id
+    ]
+    from_port = "3306"
+    to_port = "3306"
+  }
+
+  egress {
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port = "0"
+    to_port = "0"
+  }
+
   lifecycle {
     ignore_changes = [ingress, egress]
   }
