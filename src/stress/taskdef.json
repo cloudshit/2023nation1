@@ -1,0 +1,70 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "app",
+            "image": "<IMAGE1_NAME>",
+            "cpu": 512,
+            "memory": 1024,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "healthCheck": {
+                "command": [
+                    "CMD-SHELL",
+                    "curl -fLs http://localhost:8080/healthcheck > /dev/null || exit 1"
+                ],
+                "interval": 5,
+                "timeout": 2,
+                "retries": 1,
+                "startPeriod": 0
+            }
+        }
+    ],
+    "family": "skills-td-stress",
+    "executionRoleArn": "arn:aws:iam::790946953677:role/skills-role-execution-stress",
+    "networkMode": "awsvpc",
+    "revision": 1,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "ecs.capability.container-health-check"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "512",
+    "memory": "1024",
+    "registeredAt": "2023-09-27T01:34:44.798Z",
+    "registeredBy": "arn:aws:iam::790946953677:user/admin",
+    "tags": []
+}
