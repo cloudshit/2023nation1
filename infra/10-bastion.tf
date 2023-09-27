@@ -27,6 +27,10 @@ resource "aws_security_group" "bastion" {
     from_port = "80"
     to_port = "80"
   }
+
+  lifecycle {
+    ignore_changes = [ingress, egress]
+  }
 }
 
 resource "aws_iam_role" "bastion" {

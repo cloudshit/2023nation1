@@ -31,7 +31,6 @@
     "family": "skills-td-stress",
     "executionRoleArn": "arn:aws:iam::790946953677:role/skills-role-execution-stress",
     "networkMode": "awsvpc",
-    "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [

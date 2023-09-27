@@ -82,6 +82,10 @@ resource "aws_security_group" "ecs_stress" {
     from_port = "8080"
     to_port = "8080"
   }
+
+  lifecycle {
+    ignore_changes = [ingress, egress]
+  }
 }
 
 resource "aws_ecs_service" "svc_stress" {

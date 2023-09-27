@@ -30,8 +30,8 @@
     ],
     "family": "skills-td-product",
     "executionRoleArn": "arn:aws:iam::790946953677:role/skills-role-execution-product",
+    "taskRoleArn": "arn:aws:iam::790946953677:role/skills-role-task-product",
     "networkMode": "awsvpc",
-    "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [

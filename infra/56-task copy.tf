@@ -34,6 +34,43 @@ resource "aws_iam_role_policy" "execution_product" {
   policy = data.aws_iam_policy_document.execution_product.json
 }
 
+data "aws_iam_policy_document" "assume_role_task_product" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["ecs-tasks.amazonaws.com"]
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
+}
+
+resource "aws_iam_role" "task_product" {
+  name               = "skills-role-task-product"
+  assume_role_policy = data.aws_iam_policy_document.assume_role_task_product.json
+}
+
+data "aws_iam_policy_document" "task_product" {
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "secretmanager:GetSecretValue"
+    ]
+
+    resources = [
+      aws_secretsmanager_secret.db.arn
+    ]
+  }
+}
+
+resource "aws_iam_role_policy" "task_product" {
+  role   = aws_iam_role.task_product.name
+  policy = data.aws_iam_policy_document.task_product.json
+}
+
 resource "aws_ecs_task_definition" "td_product" {
   family                   = "skills-td-product"
   network_mode             = "awsvpc"
@@ -41,6 +78,7 @@ resource "aws_ecs_task_definition" "td_product" {
   cpu                      = 512
   memory                   = 1024
   execution_role_arn = aws_iam_role.execution_product.arn
+  task_role_arn = aws_iam_role.task_product.arn
 
   container_definitions = <<DEFINITION
 [
@@ -81,6 +119,10 @@ resource "aws_security_group" "ecs_product" {
     cidr_blocks = ["0.0.0.0/0"]
     from_port = "8080"
     to_port = "8080"
+  }
+
+  lifecycle {
+    ignore_changes = [ingress, egress]
   }
 }
 
