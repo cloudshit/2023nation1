@@ -27,7 +27,8 @@ data "aws_iam_policy_document" "deploy_stress" {
       "ecs:*",
       "elasticloadbalancing:*",
       "ec2:*",
-      "lambda:*"
+      "lambda:*",
+      "iam:PassRole",
     ]
 
     resources = ["*"]

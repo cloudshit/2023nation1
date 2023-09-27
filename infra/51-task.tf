@@ -66,7 +66,16 @@ resource "aws_ecs_task_definition" "td_stress" {
       "retries": 1,
       "startPeriod": 0
     },
-    "essential": true
+    "essential": true,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "wsi-log-cluster",
+        "awslogs-region": "ap-northeast-2",
+        "awslogs-create-group": "true",
+        "awslogs-stream-prefix": "stress"
+      }
+    }
   }
 ]
 DEFINITION

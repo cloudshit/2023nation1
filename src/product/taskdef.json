@@ -65,5 +65,14 @@
     "cpu": "512",
     "memory": "1024",
     "registeredAt": "2023-09-27T01:34:44.784Z",
-    "registeredBy": "arn:aws:iam::790946953677:user/admin"
+    "registeredBy": "arn:aws:iam::790946953677:user/admin",
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "wsi-log-cluster",
+        "awslogs-region": "ap-northeast-2",
+        "awslogs-create-group": "true",
+        "awslogs-stream-prefix": "product"
+      }
+    }
 }
