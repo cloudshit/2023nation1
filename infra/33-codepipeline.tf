@@ -60,7 +60,7 @@ resource "aws_codepipeline" "codepipeline_stress" {
         ApplicationName = aws_codedeploy_app.app_stress.name
         DeploymentGroupName = aws_codedeploy_deployment_group.dg_stress.deployment_group_name
         TaskDefinitionTemplateArtifact = "build_output"
-        AppSpecTemplateArtifact = "source_output"
+        AppSpecTemplateArtifact = "build_output"
         Image1ArtifactName = "build_output"
         Image1ContainerName = "IMAGE1_NAME"
       }
