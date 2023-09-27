@@ -1,0 +1,11 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:ap-northeast-2:790946953677:task-definition/skills-td-stress"
+        LoadBalancerInfo: 
+          ContainerName: "app" 
+          ContainerPort: 8080
+Hooks:
+  - AfterInstall: "arn:aws:lambda:ap-northeast-2:790946953677:function:skills-hook_stress"
