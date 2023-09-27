@@ -1,6 +1,8 @@
 FROM alpine
 
 RUN apk add --no-cache libc6-compat 
+RUN apk add --no-cache curl
+RUN apk add --no-cache stress-ng
 RUN adduser --disabled-password app
 
 RUN mkdir /app
