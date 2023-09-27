@@ -109,6 +109,11 @@ func main() {
         fmt.Print(logEntry)
     })
 
+    r.GET("/healthcheck", func(c *gin.Context) {
+        c.JSON(http.StatusOK, gin.H{"status": "healthy"})
+    })
+
+
     // /v1/product GET 요청을 처리하는 핸들러 (제품 조회)
     r.GET("/v1/product", func(c *gin.Context) {
         // id 쿼리 매개변수를 가져옵니다.
