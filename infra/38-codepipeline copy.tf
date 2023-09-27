@@ -59,7 +59,7 @@ resource "aws_codepipeline" "codepipeline_product" {
       configuration = {
         ApplicationName = aws_codedeploy_app.app_product.name
         DeploymentGroupName = aws_codedeploy_deployment_group.dg_product.deployment_group_name
-        TaskDefinitionTemplateArtifact = "source_output"
+        TaskDefinitionTemplateArtifact = "build_output"
         AppSpecTemplateArtifact = "source_output"
         Image1ArtifactName = "build_output"
         Image1ContainerName = "IMAGE1_NAME"
