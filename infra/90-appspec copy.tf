@@ -10,7 +10,5 @@ Resources:
         LoadBalancerInfo: 
           ContainerName: "app" 
           ContainerPort: 8080
-Hooks:
-  - AfterInstall: "${aws_lambda_function.hook_product.arn}"
 EOF
 }
