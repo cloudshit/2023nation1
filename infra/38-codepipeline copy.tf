@@ -53,7 +53,7 @@ resource "aws_codepipeline" "codepipeline_product" {
       category        = "Deploy"
       owner           = "AWS"
       provider        = "CodeDeployToECS"
-      input_artifacts = ["source_output", "build_output"]
+      input_artifacts = ["build_output"]
       version         = "1"
 
       configuration = {
@@ -103,6 +103,7 @@ data "aws_iam_policy_document" "codepipeline_policy_product" {
       "logs:*",
       "codedeploy:*",
       "s3:*",
+      "iam:PassRole",
       "ecs:*"
     ]
 

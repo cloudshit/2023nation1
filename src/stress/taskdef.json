@@ -64,6 +64,5 @@
     "cpu": "512",
     "memory": "1024",
     "registeredAt": "2023-09-27T01:34:44.798Z",
-    "registeredBy": "arn:aws:iam::790946953677:user/admin",
-    "tags": []
+    "registeredBy": "arn:aws:iam::790946953677:user/admin"
 }
